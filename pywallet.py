@@ -16,9 +16,6 @@ class Pywallet(object):
         data = r.json()
         return data
 
-    def testfunction(self):
-        print("test passed")
-
 wallet = Pywallet()
 
 data = wallet.getrestjson(r'https://pyblockchain.herokuapp.com/chaintest')
