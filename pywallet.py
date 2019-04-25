@@ -28,7 +28,4 @@ class Pywallet(object):
 
 wallet = Pywallet()
 wallet.addnode(r'https://pyblockchain.herokuapp.com')
-#wallet.addnode(r'https://pyblockchain.herokuapp.com/chaintest')
 wallet.posttransaction("jorge","9")
-#data = wallet.getrestjson(r'https://pyblockchain.herokuapp.com/chaintest')
-#print(data)
