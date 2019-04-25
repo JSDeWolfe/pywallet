@@ -19,7 +19,7 @@ class Pywallet(object):
     def posttransaction(self, recipient, amt):
         for node in self.nodes:
             address = node+"/posttransaction"
-            j = requests.post(address, json = {'sender':"self",'recipient':recipient,'amount':amt})
+            j = requests.post(address, json = {'sender':"self",'recipient':recipient,'amount':amt}).json()
             print(j)
         return
 
