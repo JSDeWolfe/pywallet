@@ -16,16 +16,19 @@ class Pywallet(object):
         data = r.json()
         return data
 
-    def posttransaction(self, otherparty, amt):
+    def posttransaction(self, recipient, amt):
         for node in self.nodes:
-            print(node)
-            #r = requests.post(node, data = {'key':'value'})
+            address = node+"/posttransaction"
+            j = requests.post(address, json = {'sender':"self",'recipient':recipient,'amount':amt})
+        return j
 
     def addnode(self, node):
         self.nodes.append(node)
 
 wallet = Pywallet()
-wallet.addnode(r'https://pyblockchain.herokuapp.com/chaintest')
-wallet.posttransaction(0,0)
+wallet.addnode(r'https://pyblockchain.herokuapp.com')
+#wallet.addnode(r'https://pyblockchain.herokuapp.com/chaintest')
+data = wallet.posttransaction("jorge","9")
+print(data)
 #data = wallet.getrestjson(r'https://pyblockchain.herokuapp.com/chaintest')
 #print(data)
