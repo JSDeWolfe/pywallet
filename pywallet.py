@@ -16,6 +16,10 @@ class Pywallet(object):
         data = r.json()
         return data
 
+    def posttransaction(self, otherparty, amt):
+        for node in nodes:
+            r = requests.post(node, data = {'key':'value'})
+
 wallet = Pywallet()
 
 data = wallet.getrestjson(r'https://pyblockchain.herokuapp.com/chaintest')
