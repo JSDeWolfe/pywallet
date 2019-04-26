@@ -29,13 +29,15 @@ class Pywallet(object):
     def addnodeserver(self, node):
         for node in self.nodes:
             address = node+"/nodes/register"
-            j = requests.post(address, json = {'nodes':node})
+            j = requests.post(address, json = {'nodes':node}).json()
         print(j)
         return
 
 wallet = Pywallet()
+
 wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
 wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
+
 wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
 wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
 
