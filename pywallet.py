@@ -44,17 +44,17 @@ class Pywallet(object):
 
 wallet = Pywallet()
 
-wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
-wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
+#wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
+#wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
 
-print("current nodes")
-print(*wallet.nodes)
+#print("current nodes")
+#print(*wallet.nodes)
 
-wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
-wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
+#wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
+#wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
 
 print(r'getting json https://pyblockchain.herokuapp.com/getnodes') 
-wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes')
+wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
 
 print(r'getting json https://pyblockchain2.herokuapp.com/getnodes')
 wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
