@@ -33,6 +33,13 @@ class Pywallet(object):
         print(j)
         return
 
+    def verifybalance(self, uid):
+        for node in self.nodes:
+            address = node+"/checkbalance"
+            j = requests.post(address, json = {'uid':uid}).json()
+        print(j)
+        return
+
 wallet = Pywallet()
 
 wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
