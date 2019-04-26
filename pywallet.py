@@ -12,9 +12,9 @@ class Pywallet(object):
         
 
     def getrestjson(self, address):
-        r = requests.get(address)
-        data = r.json()
-        return data
+        r = requests.get(address).json()
+        print(r)
+        return
 
     def posttransaction(self, recipient, amt):
         for node in self.nodes:
@@ -28,6 +28,7 @@ class Pywallet(object):
 
     def addnodeserver(self, node):
         for node in self.nodes:
+            print("adding: "+node)
             address = node+"/nodes/register"
             j = requests.post(address, json = {'nodes':node}).json()
         print(j)
@@ -40,12 +41,22 @@ class Pywallet(object):
         print(j)
         return
 
+
 wallet = Pywallet()
 
 wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
 wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
 
+print("current nodes")
+print(*wallet.nodes)
+
 wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
 wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
+
+print(r'getting json https://pyblockchain.herokuapp.com/getnodes') 
+wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes')
+
+print(r'getting json https://pyblockchain2.herokuapp.com/getnodes')
+wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
 
 #wallet.posttransaction("Jorge","9")
