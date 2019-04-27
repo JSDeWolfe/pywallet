@@ -34,29 +34,35 @@ class Pywallet(object):
         print(j)
         return
 
-    def verifybalance(self, uid):
-        for node in self.nodes:
-            address = node+"/checkbalance"
-            j = requests.post(address, json = {'uid':uid}).json()
+    def verifybalance(self, url,uid):
+        address = url+"/getbalance"
+        j = requests.get(address, json = {'uid':uid}).json()
         print(j)
         return
 
 
 wallet = Pywallet()
 
+wallet.verifybalance(r'https://pyblockchain.herokuapp.com', "dfs")
+
+#print("initial check")
+#print("pbc")
+#wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
+#print("pbc2")
+#wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
+
 #wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
 #wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
 
 #print("current nodes")
 #print(*wallet.nodes)
-
+#print("adding nodes to first server")
 #wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
+#print("checking nodes first server")
+#wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
+#print("adding nodes to second server")
 #wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
-
-print(r'getting json https://pyblockchain.herokuapp.com/getnodes') 
-wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
-
-print(r'getting json https://pyblockchain2.herokuapp.com/getnodes')
-wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
+#print("checking nodes second server")
+#wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
 
 #wallet.posttransaction("Jorge","9")
