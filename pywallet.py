@@ -9,7 +9,9 @@ class Pywallet(object):
         self.transactionrequest = []
         self.nodes = []
         self.idhash = []
+
 #https://stackoverflow.com/questions/15390374/python-3-how-do-i-get-a-string-literal-representation-of-a-byte-string
+
     def assignid(self, uid):
         md5_obj = hashlib.md5()
         hashed = md5_obj.update(uid.encode('utf-8'))
