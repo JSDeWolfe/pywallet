@@ -9,7 +9,12 @@ class Pywallet(object):
         self.transactionrequest = []
         self.nodes = []
         self.idhash = []
-        
+#https://stackoverflow.com/questions/15390374/python-3-how-do-i-get-a-string-literal-representation-of-a-byte-string
+    def assignid(self, uid):
+        md5_obj = hashlib.md5()
+        hashed = md5_obj.update(uid.encode('utf-8'))
+        hashid = md5_obj.digest()
+        print (hashid)
 
     def getrestjson(self, address):
         r = requests.get(address).json()
@@ -34,7 +39,7 @@ class Pywallet(object):
         print(j)
         return
 
-    def verifybalance(self, url,uid):
+    def getbalance(self, url,uid):
         address = url+"/getbalance"
         j = requests.get(address, json = {'uid':uid}).json()
         print(j)
@@ -43,7 +48,9 @@ class Pywallet(object):
 
 wallet = Pywallet()
 
-wallet.verifybalance(r'https://pyblockchain.herokuapp.com', "dfs")
+wallet.assignid("James")
+wallet.assignid("James")
+#wallet.getbalance(r'https://pyblockchain.herokuapp.com', "dfs")
 
 #print("initial check")
 #print("pbc")
