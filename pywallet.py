@@ -38,7 +38,7 @@ class Pywallet(object):
             print("adding: "+node)
             address = node+"/nodes/register"
             j = requests.post(address, json = {'nodes':node}).json()
-        print(j)
+            print(j)
         return
 
     def getbalance(self, url,uid):
@@ -49,9 +49,12 @@ class Pywallet(object):
 
 
 wallet = Pywallet()
+#git commit --allow-empty -m "Trigger Heroku deploy after enabling collectstatic"
+#git push heroku master
 
-wallet.assignid("James")
-wallet.assignid("James")
+#wallet.assignid("James")
+#wallet.assignid("James")
+
 #wallet.getbalance(r'https://pyblockchain.herokuapp.com', "dfs")
 
 #print("initial check")
@@ -60,18 +63,25 @@ wallet.assignid("James")
 #print("pbc2")
 #wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
 
-#wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
-#wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
+wallet.addnodeclient(r'https://pyblockchain.herokuapp.com')
+wallet.addnodeclient(r'https://pyblockchain2.herokuapp.com')
 
-#print("current nodes")
-#print(*wallet.nodes)
-#print("adding nodes to first server")
-#wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
-#print("checking nodes first server")
-#wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes'+'\n')
-#print("adding nodes to second server")
-#wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
-#print("checking nodes second server")
-#wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
+print("checking nodes first server")
+wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes')
+
+print("checking nodes second server")
+wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
+
+print("current nodes")
+print(*wallet.nodes)
+print("adding nodes to first server")
+wallet.addnodeserver(r'https://pyblockchain.herokuapp.com')
+
+print("checking nodes first server")
+wallet.getrestjson(r'https://pyblockchain.herokuapp.com/getnodes')
+print("adding nodes to second server")
+wallet.addnodeserver(r'https://pyblockchain2.herokuapp.com')
+print("checking nodes second server")
+wallet.getrestjson(r'https://pyblockchain2.herokuapp.com/getnodes')
 
 #wallet.posttransaction("Jorge","9")
